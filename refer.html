@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Refer and Earn</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      color: #333;
+      text-align: center;
+    }
+    .container {
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      color: #333;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    button {
+      display: block;
+      width: 80%;
+      margin: 10px auto;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+    #referral-code {
+      margin-top: 20px;
+      font-size: 20px;
+    }
+    #user-info {
+      margin-top: 20px;
+      text-align: left;
+    }
+    #user-info p {
+      color: silver; /* Silver color */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Refer and Earn</h1>
+    <div class="input-boxes">
+      <input type="text" placeholder="Name" id="name">
+      <input type="email" placeholder="Email" id="email">
+      <input type="password" placeholder="Password" id="password">
+      <button onclick="generateReferralCode()">Get Referral Code</button>
+      <div id="referral-code"></div>
+      <div id="user-info"></div>
+    </div>
+  </div>
+
+  <script>
+    function generateReferralCode() {
+      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      let code = '';
+      for (let i = 0; i < 6; i++) {
+        code += characters.charAt(Math.floor(Math.random() * characters.length));
+      }
+      document.getElementById("referral-code").textContent = "Your Referral Code: " + code;
+
+      // Retrieve user input values
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      // Display user info below referral code
+      document.getElementById("user-info").innerHTML = `
+        <p>Email: ${email}</p>
+        <p>Password: ${password}</p>
+      `;
+    }
+  </script>
+</body>
+</html>
+
